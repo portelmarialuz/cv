@@ -96,83 +96,45 @@
       </div>
 
         <!-- EXPERIENCIA -->
-      <div class="section" id="experiencia">
-        <h2>Experiencia</h2>
+<div class="section" id="experiencia">
+  <h2>Experiencia</h2>
 
-        <div class="exp-card">
+  <h3>Rush Argentina <span>2023 - 2025</span></h3>
 
-          <h3>Rush Argentina <span>2023 - 2025</span></h3>
+  <div class="exp-grid">
 
-          <div class="exp-grid">
+    <details class="exp-card">
+      <summary><i class="fa-solid fa-headset"></i> Atención al cliente</summary>
+      <p>Atención directa al público, resolución de consultas y mejora de la experiencia del cliente.</p>
+    </details>
 
-            <div class="exp-card">
-              <div class="exp-header">
-                <i class="fa-solid fa-headset"></i>
-                <h3>Atención al cliente</h3>
-              </div>
-              <div class="exp-body">
-                <p>Atención directa al público, resolución de consultas y mejora de la experiencia del cliente.</p>
-              </div>
-            </div>
+    <details class="exp-card">
+      <summary><i class="fa-solid fa-cash-register"></i> Manejo de caja</summary>
+      <p>Cobros, control de pagos, organización de stock e inventario.</p>
+    </details>
 
-            <div class="exp-card">
-              <div class="exp-header">
-                <i class="fa-solid fa-cash-register"></i>
-                <h3>Manejo de caja</h3>
-              </div>
-              <div class="exp-body">
-                <p>Cobros, control de pagos, organización de stock e inventario.</p>
-              </div>
-            </div>
+    <details class="exp-card">
+      <summary><i class="fa-solid fa-globe"></i> Ventas online</summary>
+      <p>Gestión de consultas y reservas por WhatsApp y email, asesoramiento sobre servicios.</p>
+    </details>
 
-            <div class="exp-card">
-              <div class="exp-header">
-                <i class="fa-solid fa-globe"></i>
-                <h3>Ventas online</h3>
-              </div>
-              <div class="exp-body">
-                <p>Gestión de consultas y reservas por WhatsApp y email, asesoramiento sobre servicios.</p>
-              </div>
-            </div>
+    <details class="exp-card">
+      <summary><i class="fa-solid fa-cake-candles"></i> Eventos infantiles</summary>
+      <p>Organización de cumpleaños, recepción de familias y cuidado de niños durante actividades.</p>
+    </details>
 
-            <div class="exp-card">
-              <div class="exp-header">
-                <i class="fa-solid fa-cake-candles"></i>
-                <h3>Eventos infantiles</h3>
-              </div>
-              <div class="exp-body">
-                <p>Organización de cumpleaños, recepción de familias y cuidado de niños durante actividades.</p>
-              </div>
-            </div>
+    <details class="exp-card">
+      <summary><i class="fa-solid fa-users"></i> Trabajo en equipo</summary>
+      <p>Capacitación de nuevos empleados y coordinación del equipo de trabajo.</p>
+    </details>
 
-            <div class="exp-card">
-              <div class="exp-header">
-                <i class="fa-solid fa-users"></i>
-                <h3>Trabajo en equipo</h3>
-              </div>
-              <div class="exp-body">
-                <p>Capacitación de nuevos empleados y coordinación del equipo de trabajo.</p>
-              </div>
-            </div>
+    <details class="exp-card">
+      <summary><i class="fa-solid fa-clipboard"></i> Trabajo administrativo</summary>
+      <p>Organización de registros, carga de datos y control de información, atención a consultas, apoyo operativo y coordinación interna, control de stock.</p>
+    </details>
 
-              <div class="exp-card">
-                <div class="exp-header">
-                  <i class="fa-solid fa-clipboard"></i>
-                    <h3> Trabajo administrativo</h3>
-                </div>
-                <div class="exp-body">
-                  <p> Organización de registros, carga de datos y control de información,
-                     atención a consultas y resolución de tareas, apoyo en tareas operativas y coordinación interna,
-                      administración y control de stock </p>
-                </div>
-              </div>
-              
-          </div>
-
-        </div>
-
-        </div>
-      </div>
+  </div>
+</div>
 
 
   <!-- EDUCACIÓN -->
@@ -363,17 +325,14 @@
   const cards = document.querySelectorAll(".exp-card");
 
   cards.forEach(card => {
-    card.addEventListener("click", () => {
-
-      // cerrar otras (opcional pero queda mejor)
-      cards.forEach(c => {
-        if (c !== card) {
-          c.classList.remove("active");
-        }
-      });
-
-      // abrir/cerrar la tocada
-      card.classList.toggle("active");
+    card.addEventListener("toggle", () => {
+      if (card.open) {
+        cards.forEach(other => {
+          if (other !== card) {
+            other.removeAttribute("open");
+          }
+        });
+      }
     });
   });
 </script>
