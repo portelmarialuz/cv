@@ -170,6 +170,7 @@ summary {
 
 
 /* experiencia */
+/* GRID */
 .exp-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -177,48 +178,82 @@ summary {
   margin-top: 15px;
 }
 
+/* TARJETAS */
 .exp-card {
   background: rgba(255,255,255,0.7);
   border-radius: 16px;
   padding: 15px;
+  backdrop-filter: blur(10px);
   cursor: pointer;
-
   transition: 0.3s;
-  overflow: hidden;
+  border: 1px solid rgba(168,85,247,0.2);
 }
 
-/* HEADER */
-.exp-header {
+/* HOVER */
+.exp-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(168,85,247,0.2);
+}
+
+/* TITULO */
+.exp-card summary {
+  list-style: none;
+  font-weight: 600;
   display: flex;
   align-items: center;
   gap: 10px;
   color: #7b2ff7;
 }
 
-.exp-header i {
+/* SACAR FLECHA DEFAULT */
+.exp-card summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ICONO */
+.exp-card i {
   font-size: 18px;
 }
 
-/* CONTENIDO OCULTO */
-.exp-body {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.4s ease;
-  font-size: 14px;
+/* TEXTO */
+.exp-card p {
   margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
 }
 
-/* ACTIVO */
-.exp-card.active .exp-body {
-  max-height: 200px;
-  opacity: 1;
+/* EFECTO ABIERTO */
+.exp-card[open] {
+  background: linear-gradient(135deg, #f3e8ff, #ffffff);
+  border: 1px solid #c084fc;
 }
 
-/* HOVER */
-.exp-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+/* FLECHITA CUSTOM */
+.exp-card summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+/* ROTAR FLECHA */
+.exp-card[open] summary::after {
+  transform: rotate(90deg);
+}
+
+/* EXPERIENCIA MODO OSCURO */
+.dark .exp-card {
+  background: rgba(30,30,50,0.8);
+  color: #eee;
+}
+
+.dark .exp-card p {
+  color: #ccc;
+}
+
+.dark .exp-card[open] {
+  background: linear-gradient(135deg, #2a2a40, #1e1e2f);
 }
 
 /* CONTENEDOR */
@@ -440,7 +475,6 @@ html {
   z-index: 9999;
   transition: width 0.2s ease;
 }
-
 
 
 
