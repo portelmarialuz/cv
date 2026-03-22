@@ -44,50 +44,55 @@
 
       <div class="section" id="habilidades">
         <h2>Habilidades</h2>
-
+        <div class="filtros">
+          <button data-filter="all">Todos</button>
+          <button data-filter="it">IT</button>
+          <button data-filter="cliente">Cliente</button>
+          <button data-filter="otros">Otros</button>
+        </div>
         <div class="skills">
 
-          <div class="skill-card">
+          <div class="skill-card" data-cat="cliente">
             <i class="fa-solid fa-headset"></i>
             <span>Atención al cliente</span>
           </div>
 
-          <div class="skill-card">
+          <div class="skill-card" data-cat="cliente">
             <i class="fa-solid fa-cash-register"></i>
             <span>Manejo de caja</span>
           </div>
 
-          <div class="skill-card">
+          <div class="skill-card" data-cat="it">
             <i class="fa-brands fa-html5"></i>
             <span>HTML</span>
           </div>
 
-          <div class="skill-card">
+          <div class="skill-card" data-cat="it">
             <i class="fa-brands fa-css3-alt"></i>
             <span>CSS</span>
           </div>
 
-          <div class="skill-card">
+          <div class="skill-card" data-cat="it">
             <i class="fa-brands fa-python"></i>
             <span>Python</span>
           </div>
 
-          <div class="skill-card">
+          <div class="skill-card" data-cat="otros">
             <i class="fa-solid fa-people-group"></i>
             <span>Trabajo en equipo</span>
           </div>
 
-          <div class="skill-card">
+          <div class="skill-card" data-cat="otros">
             <i class="fa-solid fa-comments"></i>
             <span>Comunicación</span>
           </div>
 
-          <div class="skill-card">
+          <div class="skill-card" data-cat="otros">
             <i class="fa-solid fa-calendar-check"></i>
             <span>Organización</span>
           </div>
 
-          <div class="skill-card">
+          <div class="skill-card" data-cat="otros">
             <i class="fa-solid fa-bolt"></i>
             <span>Resolución rápida</span>
           </div>
@@ -143,53 +148,58 @@
 
   <div class="education">
 
+    <!-- CARRERA -->
     <div class="edu-card">
-      <details>
-        <summary>
-          <i class="fa-solid fa-graduation-cap"></i>
-          Licenciatura en Gestión de Tecnologías de la Información
-          <span class="estado curso">En curso</span>
-        </summary>
+      <h3>
+        <i class="fa-solid fa-graduation-cap"></i>
+        Licenciatura en Gestión de Tecnologías de la Información
+      </h3>
 
-        <div class="progreso">
+      <span class="estado curso">En curso</span>
 
-            <div class="prog-item">
-            <span>Licenciada en Gestión IT</span>
-            <div class="barra">
-              <div class="relleno" data-width="25.58%"></div>
-            </div>
-            <span class="porcentaje">25.58%</span>
+      <div class="prog-item">
+        <div class="prog-top">
+          <span>Licenciatura IT</span>
+          <span class="porcentaje" data-value="25.58%">0%</span>
         </div>
+        <div class="barra">
+          <div class="relleno" data-width="25.58%"></div>
         </div>
-
-        <div class="prog-item">
-          <span>Analista de Sistemas</span>
-          <div class="barra">
-            <div class="relleno" data-width="39.29%"></div>
-          </div>
-            <span class="porcentaje">39.29%</span>
-        </div>
-
-    </div>
-      </details>
-</div>
-
-      <div class="edu-card">
-        <details>
-          <summary>
-            <i class="fa-solid fa-code"></i>
-            Diseño Web – Programación y Pensamiento Computacional
-            <span class="estado curso">Finalizado</span>
-          </summary>
-
-          <p style="margin-top:10px;">
-            Formación en desarrollo web y lógica de programación.
-          </p>
-        </details>
       </div>
 
+      <div class="prog-item">
+        <div class="prog-top">
+          <span>Analista de Sistemas</span>
+          <span class="porcentaje" data-value="39.29%">0%</span>
+        </div>
+        <div class="barra">
+          <div class="relleno" data-width="39.29%"></div>
+        </div>
+      </div>
     </div>
+
+    <!-- CURSO -->
+    <div class="edu-card">
+      <h3>
+        <i class="fa-solid fa-code"></i>
+        Diseño Web – Programación
+      </h3>
+
+      <span class="estado ok">Finalizado</span>
+
+      <div class="prog-item">
+        <div class="prog-top">
+          <span>Curso completo</span>
+          <span class="porcentaje" data-value="100%">0%</span>
+        </div>
+        <div class="barra">
+          <div class="relleno" data-width="100%"></div>
+        </div>
+      </div>
+    </div>
+
   </div>
+</div>
 
 
 
@@ -266,34 +276,48 @@
 
     let current = "";
 
-    // 📊 PROGRESS BAR
-    const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollActual = window.scrollY;
-    const porcentaje = (scrollActual / scrollTotal) * 100;
-    progressBar.style.width = porcentaje + "%";
 
-    // 🔍 DETECTAR SECCIÓN
-    sections.forEach(sec => {
-      const top = sec.offsetTop - 200;
-      const height = sec.offsetHeight;
+    // 📈 ANIMAR BARRAS EDUCACIÓN
 
-      if (scrollY >= top && scrollY < top + height) {
-        current = sec.getAttribute("id");
-      }
-    });
 
-    // ✨ BLUR CORREGIDO
-    if (current === "") {
-      sections.forEach(sec => sec.classList.remove("blur"));
-    } else {
-      sections.forEach(sec => {
-        if (sec.getAttribute("id") !== current) {
-          sec.classList.add("blur");
-        } else {
-          sec.classList.remove("blur");
+    // 📈 BARRAS + PORCENTAJES
+const barras = document.querySelectorAll(".relleno");
+
+barras.forEach(barra => {
+  const rect = barra.getBoundingClientRect();
+
+  if (rect.top < window.innerHeight - 50 && rect.bottom > 0) {
+    
+    barra.style.width = barra.dataset.width;
+
+    const porcentaje = barra.parentElement.previousElementSibling.querySelector(".porcentaje");
+
+    if (!porcentaje.classList.contains("animado")) {
+      let valor = 0;
+      const max = parseFloat(porcentaje.dataset.value);
+
+      const intervalo = setInterval(() => {
+        valor += max / 30;
+
+        if (valor >= max) {
+          valor = max;
+          clearInterval(intervalo);
         }
-      });
+
+        porcentaje.textContent = valor.toFixed(0) + "%";
+      }, 20);
+
+      porcentaje.classList.add("animado");
     }
+
+  } else {
+    barra.style.width = "0%";
+
+    const porcentaje = barra.parentElement.previousElementSibling.querySelector(".porcentaje");
+    porcentaje.textContent = "0%";
+    porcentaje.classList.remove("animado");
+  }
+});
 
 
     // 🎯 ACTIVAR ICONO
@@ -321,19 +345,50 @@
 });
 </script>
     <button id="topBtn">⬆️</button>
-<script>
-  const cards = document.querySelectorAll(".exp-card");
 
-  cards.forEach(card => {
-    card.addEventListener("toggle", () => {
-      if (card.open) {
-        cards.forEach(other => {
-          if (other !== card) {
-            other.removeAttribute("open");
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".exp-card");
+
+    cards.forEach(card => {
+      card.addEventListener("toggle", () => {
+
+        if (card.open) {
+          cards.forEach(other => {
+            if (other !== card) {
+              other.removeAttribute("open");
+            }
+          });
+        }
+
+      });
+    });
+  });
+</script>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+
+    const botones = document.querySelectorAll(".filtros button");
+    const skills = document.querySelectorAll(".skill-card");
+
+    botones.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const filtro = btn.dataset.filter;
+
+        skills.forEach(skill => {
+          if (filtro === "all" || skill.dataset.cat === filtro) {
+            skill.style.display = "flex";
+          } else {
+            skill.style.display = "none";
           }
         });
-      }
+      });
     });
+
   });
 </script>
   </body>
