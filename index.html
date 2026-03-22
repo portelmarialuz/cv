@@ -349,22 +349,26 @@ barras.forEach(barra => {
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".exp-card");
+  const cards = document.querySelectorAll(".exp-card");
 
-    cards.forEach(card => {
-      card.addEventListener("toggle", () => {
+  cards.forEach(card => {
+    const summary = card.querySelector("summary");
 
-        if (card.open) {
-          cards.forEach(other => {
-            if (other !== card) {
-              other.removeAttribute("open");
-            }
-          });
-        }
+    summary.addEventListener("click", (e) => {
+      e.preventDefault(); // 💣 bloquea el comportamiento nativo
 
-      });
+      const isOpen = card.hasAttribute("open");
+
+      // cerrar todas
+      cards.forEach(c => c.removeAttribute("open"));
+
+      // abrir solo si estaba cerrada
+      if (!isOpen) {
+        card.setAttribute("open", "");
+      }
     });
   });
+});
 </script>
 
 
