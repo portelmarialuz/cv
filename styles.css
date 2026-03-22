@@ -274,6 +274,7 @@ summary {
   cursor: pointer;
   transition: 0.3s;
   border: 1px solid rgba(168,85,247,0.2);
+  overflow: hidden;
 }
 
 /* HOVER */
@@ -304,18 +305,24 @@ summary {
 }
 
 /* TEXTO */
+.exp-card p {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
 .exp-card[open] p {
   max-height: 200px;
   opacity: 1;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
 }
 
 
 /* TARJETA ABIERTA */
 
 .exp-card[open] {
-   max-height: 200px;
-   opacity: 1;
+  background: linear-gradient(135deg, #f3e8ff, #ffffff);
+  border: 1px solid #c084fc;
   transform: scale(1.02);
 }
 
