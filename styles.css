@@ -214,9 +214,9 @@ summary {
 /* BARRA */
 .barra {
   width: 100%;
-  height: 8px;
-  background: #eee;
-  border-radius: 10px;
+  height: 10px;
+  background: rgba(0,0,0,0.05);
+  border-radius: 20px;
   overflow: hidden;
 }
 
@@ -224,8 +224,20 @@ summary {
   height: 100%;
   width: 0;
   background: linear-gradient(90deg, #a855f7, #c084fc);
-  border-radius: 10px;
+  border-radius: 20px;
   transition: width 1.5s ease;
+  box-shadow: 0 0 12px rgba(168,85,247,0.6);
+}
+
+.relleno::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 10px;
+  background: rgba(255,255,255,0.5);
+  filter: blur(4px);
 }
 
 /* DARK MODE */
@@ -292,17 +304,19 @@ summary {
 }
 
 /* TEXTO */
-.exp-card p {
-  margin-top: 10px;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #444;
+.exp-card[open] p {
+  max-height: 200px;
+  opacity: 1;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
 }
 
+
 /* TARJETA ABIERTA */
+
 .exp-card[open] {
-  background: linear-gradient(135deg, #f3e8ff, #ffffff);
-  border: 1px solid #c084fc;
+   max-height: 200px;
+   opacity: 1;
+  transform: scale(1.02);
 }
 
 /* FLECHA CUSTOM */
@@ -547,4 +561,27 @@ html {
 
 #topBtn.show {
   opacity: 1;
+}
+
+
+/* FILTROS */
+.filtros {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filtros button {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: rgba(168,85,247,0.1);
+  color: #7b2ff7;
+  transition: 0.3s;
+}
+
+.filtros button:hover {
+  background: linear-gradient(135deg, #a855f7, #c084fc);
+  color: white;
 }
