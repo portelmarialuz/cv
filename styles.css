@@ -179,8 +179,9 @@ summary {
 }
 
 /* TARJETAS */
+/* TARJETAS EXPERIENCIA */
 .exp-card {
-  background: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.95);
   border-radius: 16px;
   padding: 15px;
   backdrop-filter: blur(10px);
@@ -195,7 +196,7 @@ summary {
   box-shadow: 0 10px 25px rgba(168,85,247,0.2);
 }
 
-/* TITULO */
+/* SUMMARY (TÍTULO) */
 .exp-card summary {
   list-style: none;
   font-weight: 600;
@@ -203,6 +204,7 @@ summary {
   align-items: center;
   gap: 10px;
   color: #7b2ff7;
+  justify-content: space-between;
 }
 
 /* SACAR FLECHA DEFAULT */
@@ -223,28 +225,38 @@ summary {
   color: #444;
 }
 
-/* EFECTO ABIERTO */
+/* TARJETA ABIERTA */
 .exp-card[open] {
   background: linear-gradient(135deg, #f3e8ff, #ffffff);
   border: 1px solid #c084fc;
 }
 
-/* FLECHITA CUSTOM */
+/* FLECHA CUSTOM */
 .exp-card summary::after {
-  content: "›";
+  content: "▼";
   margin-left: auto;
-  font-size: 18px;
+  font-size: 12px;
   transition: 0.3s;
 }
 
-/* ROTAR FLECHA */
+/* ROTACIÓN */
 .exp-card[open] summary::after {
-  transform: rotate(90deg);
+  transform: rotate(180deg);
+}
+
+@media (max-width: 600px) {
+  .exp-card {
+    padding: 18px;
+  }
+
+  .exp-card p {
+    font-size: 15px;
+  }
 }
 
 /* EXPERIENCIA MODO OSCURO */
 .dark .exp-card {
-  background: rgba(30,30,50,0.8);
+  background: rgba(30,30,50,0.95);
   color: #eee;
 }
 
@@ -255,6 +267,9 @@ summary {
 .dark .exp-card[open] {
   background: linear-gradient(135deg, #2a2a40, #1e1e2f);
 }
+
+
+
 
 /* CONTENEDOR */
 .menu {
@@ -475,6 +490,3 @@ html {
   z-index: 9999;
   transition: width 0.2s ease;
 }
-
-
-
