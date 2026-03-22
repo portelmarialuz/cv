@@ -147,24 +147,98 @@ summary {
 }
 
 /* EDUCACIÓN */
-.edu-card {
-  margin-bottom: 15px;
+/* EDUCACIÓN PRO */
+.education {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+.edu-card {
+  background: rgba(255,255,255,0.9);
+  padding: 18px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(168,85,247,0.2);
+  transition: 0.3s;
+}
+
+.edu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(168,85,247,0.2);
+}
+
+.edu-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #7b2ff7;
+}
+
+/* ESTADOS */
+.estado {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  color: white;
+}
+
+.estado.curso {
+  background: #a855f7;
+}
+
+.estado.ok {
+  background: #22c55e;
+}
+
+/* PROGRESO */
+.prog-item {
+  margin-top: 12px;
+}
+
+.prog-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.porcentaje {
+  font-weight: 600;
+  color: #7b2ff7;
+}
+
+/* BARRA */
 .barra {
   width: 100%;
   height: 8px;
   background: #eee;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .relleno {
   height: 100%;
+  width: 0;
   background: linear-gradient(90deg, #a855f7, #c084fc);
   border-radius: 10px;
-
-  width: 0;
   transition: width 1.5s ease;
+}
+
+/* DARK MODE */
+.dark .edu-card {
+  background: rgba(30,30,50,0.95);
+}
+
+.dark .barra {
+  background: rgba(255,255,255,0.2);
+}
+
+.dark .relleno {
+  background: linear-gradient(90deg, #9333ea, #f0abfc);
 }
 
 
@@ -473,20 +547,4 @@ html {
 
 #topBtn.show {
   opacity: 1;
-}
-
-
-/* BARRA DE PROGRESO */
-#progressBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 0%;
-  height: 5px;
-
-  background: linear-gradient(90deg, #a855f7, #c084fc);
-  
-  z-index: 9999;
-  transition: width 0.2s ease;
 }
