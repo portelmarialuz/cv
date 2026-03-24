@@ -852,3 +852,8 @@ body, .cv, .section, .exp-card, .edu-card, .skill-card, .sidebar {
 .dark .perfil-item {
   background: rgba(255, 255, 255, 0.05);
 }
+
+/* RELLENO BARRA */
+.dark .relleno::after {
+  background: rgba(255,255,255,0);
+}
