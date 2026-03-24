@@ -103,15 +103,6 @@ details:hover {
   transform: translateY(-3px);
 }
 
-/* 🌙 DARK */
-.dark {
-  background: #121212;
-  color: #eee;
-}
-
-.dark .cv {
-  background: rgba(30,30,50,0.8);
-}
 
 
 
@@ -240,18 +231,6 @@ summary {
   filter: blur(4px);
 }
 
-/* DARK MODE */
-.dark .edu-card {
-  background: rgba(30,30,50,0.95);
-}
-
-.dark .barra {
-  background: rgba(255,255,255,0.2);
-}
-
-.dark .relleno {
-  background: linear-gradient(90deg, #9333ea, #f0abfc);
-}
 
 
 
@@ -349,19 +328,6 @@ summary {
   }
 }
 
-/* EXPERIENCIA MODO OSCURO */
-.dark .exp-card {
-  background: rgba(30,30,50,0.95);
-  color: #eee;
-}
-
-.dark .exp-card p {
-  color: #ccc;
-}
-
-.dark .exp-card[open] {
-  background: linear-gradient(135deg, #2a2a40, #1e1e2f);
-}
 
 
 
@@ -677,7 +643,212 @@ html {
 }
 
 
+.section h2 {
+  color: #4a0e5c;
+}
 .section h2 i {
   margin-right: 8px;
   color: #a855f7;
+}
+
+
+.perfil-item {
+  background: rgba(255,255,255,0.6);
+  padding: 12px;
+  border-radius: 12px;
+
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.5s ease;
+}
+
+/* cuando aparecen */
+.perfil-box.show .perfil-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* delay para efecto escalonado */
+.perfil-box.show .perfil-item:nth-child(1) { transition-delay: 0.1s; }
+.perfil-box.show .perfil-item:nth-child(2) { transition-delay: 0.2s; }
+.perfil-box.show .perfil-item:nth-child(3) { transition-delay: 0.3s; }
+
+
+
+
+
+
+
+.titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* HABILIDADES */
+.titulo.habilidades {
+  color: #4a0e5c;
+}
+
+.titulo.habilidades i {
+  color: #a855f7;
+}
+
+/* EXPERIENCIA */
+.titulo.experiencia {
+  color: #4a0e5c;
+}
+
+.titulo.experiencia i {
+  color: #3b82f6;
+}
+
+.titulo.empleo  {
+  color: #2b0a35;
+}
+
+/* EDUCACIÓN */
+.titulo.educacion{
+  color: #4a0e5c;
+}
+
+.titulo.educacion i {
+  color: #22c55e;
+}
+
+
+
+/* 🌙 MODO OSCURO PRO */
+.dark {
+  background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+  color: #e5e7eb;
+}
+
+/* CV */
+.dark .cv {
+  background: rgba(20, 20, 35, 0.85);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* HEADER */
+.dark .header {
+  background: linear-gradient(135deg, #6d28d9, #a855f7);
+}
+
+/* SECCIONES */
+.dark .section {
+  background: rgba(30, 30, 50, 0.6);
+  border: 1px solid rgba(168,85,247,0.15);
+}
+
+/* SIDEBAR */
+.dark .sidebar {
+  background: rgba(20,20,35,0.8);
+}
+
+.dark .sidebar a {
+  color: #c4b5fd;
+}
+
+.dark .sidebar a.active {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: white;
+}
+
+/* HABILIDADES */
+.dark .skill-card {
+  background: rgba(124,58,237,0.15);
+  color: #ddd6fe;
+}
+
+.dark .skill-card:hover {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: white;
+}
+
+/* EXPERIENCIA */
+.dark .exp-card {
+  background: rgba(30,30,50,0.9);
+  border: 1px solid rgba(168,85,247,0.2);
+}
+
+.dark .exp-card[open] {
+  background: linear-gradient(135deg, #1f1f35, #2a2a45);
+  border: 1px solid #a855f7;
+}
+
+.dark .exp-card p {
+  color: #d1d5db;
+}
+
+/* EDUCACIÓN */
+.dark .edu-card {
+  background: rgba(30,30,50,0.9);
+  border: 1px solid rgba(168,85,247,0.2);
+}
+
+.dark .barra {
+  background: rgba(255,255,255,0.1);
+}
+
+.dark .relleno {
+  background: linear-gradient(90deg, #7c3aed, #c084fc);
+}
+
+/* PERFIL */
+.dark .perfil-box {
+  background: rgba(30,30,50,0.6);
+  border: 1px solid rgba(168,85,247,0.15);
+}
+
+.dark .perfil-highlights div {
+  background: rgba(124,58,237,0.2);
+  color: #ddd6fe;
+}
+
+/* BOTÓN */
+.dark #modoBtn {
+  background: #1f1f35;
+  color: #fff;
+}
+
+/* BOTÓN TOP */
+.dark #topBtn {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+}
+
+/* MENÚ FLOTANTE */
+.dark #menuBtn {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+}
+
+/* FILTROS */
+.dark .filtros button {
+  background: rgba(124,58,237,0.2);
+  color: #ddd6fe;
+}
+
+.dark .filtros button:hover {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: white;
+}
+
+.dark .section h2 {
+  color: #e9d5ff
+}
+
+.dark .titulo.experiencia i {
+  color: #60a5fa
+}
+
+.dark .titulo.educacion i {
+  color: #4ade80
+}
+
+body, .cv, .section, .exp-card, .edu-card, .skill-card, .sidebar {
+  transition: all 0.4s ease;
+}
+
+.dark .perfil-item {
+  background: rgba(255, 255, 255, 0.05);
 }
