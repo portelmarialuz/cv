@@ -592,7 +592,7 @@ html {
   padding: 18px;
   border-radius: 16px;
 
-  background: rgba(168,85,247,0.05);
+  background: linear-gradient(135deg, #fff7ed, #f5f3ff);
   border-left: 4px solid #a855f7;
 
   display: flex;
@@ -653,9 +653,9 @@ html {
 
 
 .perfil-item {
-  background: rgba(255,255,255,0.6);
+  background: white;
   padding: 12px;
-  border-radius: 12px;
+  border: 1px solid rgba(168, 85, 247, 0.15); 
 
   opacity: 0;
   transform: translateY(15px);
@@ -852,6 +852,8 @@ body, .cv, .section, .exp-card, .edu-card, .skill-card, .sidebar {
 .dark .perfil-item {
   background: rgba(255, 255, 255, 0.05);
 }
+
+
 
 /* RELLENO BARRA */
 .dark .relleno::after {
