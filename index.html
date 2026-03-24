@@ -30,16 +30,35 @@
     <div class="header">
       <img src="foto.jpeg" alt="Foto">
       <h1>María Luz Portel</h1>
-      <p>Atención al Cliente | Eventos | Estudiante IT</p>
+      <p>Estudiante de IT | Desarrollo Web en formación | Experiencia en atención al cliente</p>
     </div>
-    <p class="frase">Responsabilidad, organización y enfoque en brindar una excelente experiencia al cliente</p>
- 
+    
     <div class="container">
       <div class="section" id="perfil">
-        <h2>Perfil</h2>
-        <p>Estudiante IT con experiencia en atención al cliente y eventos.</p>
-      </div>
+        <div class="section" id="perfil">
+          <h2><i class="fa-solid fa-user"></i> Sobre mí</h2>
 
+          <div class="perfil-box">
+            <p class="perfil-main">
+              Estoy dando mis primeros pasos en el mundo IT, combinando formación técnica con experiencia en atención al cliente y organización de eventos.
+            </p>
+
+            <p>
+              Me destaco por mi capacidad de adaptación, organización y resolución de situaciones en entornos dinámicos, manteniendo siempre una buena comunicación y enfoque en el trabajo en equipo.
+            </p>
+
+            <p>
+              Actualmente me encuentro en constante aprendizaje, incorporando herramientas tecnológicas y nuevas habilidades para seguir creciendo profesionalmente.
+            </p>
+          </div>
+
+          <div class="perfil-highlights">
+            <div>💻 Formación en IT</div>
+            <div>🤝 Trato con clientes</div>
+            <div>⚡ Resolución de situaciones</div>
+            <div>📊 Organización y responsabilidad</div>
+          </div>
+        </div>
 
 
       <div class="section" id="habilidades">
@@ -349,26 +368,26 @@ barras.forEach(barra => {
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".exp-card");
+    const cards = document.querySelectorAll(".exp-card");
 
-  cards.forEach(card => {
-    const summary = card.querySelector("summary");
+    cards.forEach(card => {
+      const summary = card.querySelector("summary");
 
-    summary.addEventListener("click", (e) => {
-      e.preventDefault(); // 💣 bloquea el comportamiento nativo
+      summary.addEventListener("click", (e) => {
+        e.preventDefault(); // 🚫 evita comportamiento automático
 
-      const isOpen = card.hasAttribute("open");
+        const isOpen = card.open;
 
-      // cerrar todas
-      cards.forEach(c => c.removeAttribute("open"));
+        // cerrar todas
+        cards.forEach(c => c.open = false);
 
-      // abrir solo si estaba cerrada
-      if (!isOpen) {
-        card.setAttribute("open", "");
-      }
+        // abrir solo si estaba cerrada
+        if (!isOpen) {
+          card.open = true;
+        }
+      });
     });
   });
-});
 </script>
 
 
@@ -393,6 +412,21 @@ barras.forEach(barra => {
       });
     });
 
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const perfil = document.querySelector(".perfil-box");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          perfil.classList.add("show");
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(perfil);
   });
 </script>
   </body>
